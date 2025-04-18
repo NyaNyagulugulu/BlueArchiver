@@ -1,9 +1,9 @@
 {
   "required": true,
-  "minVersion": "0.8",
-  "package": "neko.bluearchive.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "package": "neko.bluearchive.client",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
+
   ],
   "injectors": {
     "defaultRequire": 1
