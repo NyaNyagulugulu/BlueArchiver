@@ -3,19 +3,17 @@
   "id": "bluearchive",
   "version": "${version}",
   "name": "BlueArchive",
-  "description": "碧蓝档案",
+  "description": "不穿胖次の小奶猫",
   "authors": [
     "不穿胖次の小奶猫",
     "CrystalNeko"
   ],
-
   "contact": {
     "website": "https://cnmsb.xin",
     "repo": "https://github.com/NyaNyagulugulu/BlueArchiver",
     "issues": "https://github.com/NyaNyagulugulu/BlueArchiver/issues",
     "homepage": "https://cnmsb.xin"
   },
-
   "license": "GPL-v3",
   "icon": "assets/icon.png",
   "environment": "*",
@@ -24,7 +22,6 @@
       "neko.bluearchive.Bluearchive"
     ]
   },
-
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
@@ -37,5 +34,8 @@
       },
       "update_checker": true
     }
-  }
+  },
+  "mixins": [
+    "bluearchive.mixins.json"
+  ]
 }
