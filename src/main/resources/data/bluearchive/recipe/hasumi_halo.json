@@ -22,14 +22,14 @@
       "item": "minecraft:amethyst_shard"
     },
     "S": {
-      "id": "minecraft:glowstone_dust"
+      "item": "minecraft:glowstone_dust"
     },
     "C": {
       "item": "minecraft:glowstone_dust"
     }
   },
   "result": {
-    "item": "bluearchive:hasumi_halo",
+    "id": "bluearchive:hasumi_halo",
     "count": 1
   }
 }

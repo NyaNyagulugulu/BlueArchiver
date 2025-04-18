@@ -146,6 +146,13 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
             new MariHaloItem(BAMaterials.MARI_HALO, ArmorItem.Type.HELMET, new Item.Settings())
     );
 
+    // 星野的光环hoshino
+    public static final Item HOSHION_HALO = Registry.register(
+            Registries.ITEM,
+            Identifier.of(MOD_ID, "hoshino_halo"),
+            new MomoiHaloItem(BAMaterials.HOSHION_HALO, ArmorItem.Type.HELMET, new Item.Settings())
+    );
+
 
     // 准备出发唱片
     public static final Item BLUEARCHIVER_DISC = Registry.register(
@@ -181,6 +188,7 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
                         entries.add(HANAKO_HALO);    // 花子的光环
                         entries.add(MARI_HALO);      // 玛丽的光环
                         entries.add(YUUKA_HALO);     // 邮箱的光环
+                        entries.add(HOSHION_HALO);     // 星野的光环
 
                         entries.add(BLUEARCHIVER_DISC); // 准备出发唱片
                     })
