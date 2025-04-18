@@ -34,6 +34,15 @@
 > 去 [Release 页面](https://github.com/NyaNyagulugulu/BlueArchiver/releases) 下载  
 > 傻逼原项目连个下载都要绕三圈，服了
 
+## 更新日志
+#### 1.6更新
+
+- 忘了(
+
+#### 1.7更新：
+
+- 唱片“准备出发”
+
 ## 🛠️ 构建方法
 
 ```bash
