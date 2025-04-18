@@ -151,7 +151,7 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
     public static final Item BLUEARCHIVER_DISC = Registry.register(
             Registries.ITEM,
             Identifier.of(MOD_ID, "bluearchiver_disc"),
-            new class_1747(1, BASounds.BLUEARCHIVER_MUSIC, new Item.Settings().maxCount(1), 120)
+            new MusicDiscItem(1, BASounds.BLUEARCHIVER_MUSIC, new Item.Settings().maxCount(1), 120)
     );
 
     // 创造物品组
