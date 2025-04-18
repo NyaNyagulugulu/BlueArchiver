@@ -10,6 +10,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.MusicDiscItem;
 
 public class Bluearchive implements ModInitializer, ClientModInitializer {
     public static final String MOD_ID = "bluearchive";
@@ -144,6 +147,13 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
     );
 
 
+    // 准备出发唱片
+    public static final Item BLUEARCHIVER_DISC = Registry.register(
+            Registries.ITEM,
+            Identifier.of(MOD_ID, "bluearchiver_disc"),
+            new MusicDiscItem(1, BASounds.BLUEARCHIVER_MUSIC, new Item.Settings().maxCount(1), 120)
+    );
+
     // 创造物品组
     public static final ItemGroup ITEM_GROUP = Registry.register(
             Registries.ITEM_GROUP,
@@ -170,7 +180,9 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
                         entries.add(NOA_HALO);       // 诺亚的光环
                         entries.add(HANAKO_HALO);    // 花子的光环
                         entries.add(MARI_HALO);      // 玛丽的光环
-                        entries.add(YUUKA_HALO);      // 邮箱的光环
+                        entries.add(YUUKA_HALO);     // 邮箱的光环
+
+                        entries.add(BLUEARCHIVER_DISC); // 准备出发唱片
                     })
                     .build()
     );

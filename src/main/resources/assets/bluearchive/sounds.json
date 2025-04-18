@@ -8,5 +8,13 @@
         "stream": false
       }
     ]
+  },
+  "music.BlueArchiver": {
+    "sounds": [
+      {
+        "name": "bluearchive:music/bluearchiver",
+        "stream": true
+      }
+    ]
   }
 }
