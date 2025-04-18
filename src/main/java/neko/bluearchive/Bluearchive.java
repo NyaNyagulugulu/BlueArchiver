@@ -192,6 +192,7 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
 
     @Override
     public void onInitialize() {
+        BASounds.init();
         // 注册“卧槽，盒！装逼我让你飞起来”音效
         Registry.register(Registries.SOUND_EVENT, BOX_SOUND_ID, BOX_SOUND);
         Registry.register(Registries.ITEM, Identifier.of(MOD_ID, "als"), ALS);
