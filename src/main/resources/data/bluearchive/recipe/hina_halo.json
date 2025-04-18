@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    " S ",
+    " M "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:diamond"
+    },
+    "M": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "result": {
+    "id": "bluearchive:hina_halo",
+    "count": 1
+  }
+}

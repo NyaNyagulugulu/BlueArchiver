@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DY ",
+    "  F",
+    "  H"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:gold_ingot"
+    },
+    "Y": {
+      "item": "minecraft:iron_block"
+    },
+    "F": {
+      "item": "minecraft:glass"
+    },
+    "H": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "id": "bluearchive:izuna_halo",
+    "count": 1
+  }
+}

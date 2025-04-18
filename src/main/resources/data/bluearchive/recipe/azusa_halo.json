@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "E  ",
+    "N  ",
+    "DIF"
+  ],
+  "key": {
+    "E": {
+      "item": "minecraft:book"
+    },
+    "N": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "D": {
+      "item": "minecraft:nether_star"
+    },
+    "I": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "F": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "id": "bluearchive:azusa_halo",
+    "count": 1
+  }
+}

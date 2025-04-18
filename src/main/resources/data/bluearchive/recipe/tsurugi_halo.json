@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "Y  ",
+    " D ",
+    "RF "
+  ],
+  "key": {
+    "Y": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "D": {
+      "item": "minecraft:feather"
+    },
+    "R": {
+      "item": "minecraft:iron_block"
+    },
+    "F": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "id": "bluearchive:tsurugi_halo",
+    "count": 1
+  }
+}

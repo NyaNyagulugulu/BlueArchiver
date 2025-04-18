@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C B",
+    "PK ",
+    "   "
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    },
+    "P": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "K": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "id": "bluearchive:iroha_halo",
+    "count": 1
+  }
+}

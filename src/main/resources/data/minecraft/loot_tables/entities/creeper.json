@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "killer",
+          "predicate": {
+            "type": "minecraft:skeleton"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "bluearchive:bluearchive_disc",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

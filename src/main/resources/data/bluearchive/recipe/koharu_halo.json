@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "E G",
+    "XY ",
+    "  H"
+  ],
+  "key": {
+    "E": {
+      "item": "minecraft:paper"
+    },
+    "G": {
+      "item": "minecraft:iron_ingot"
+    },
+    "X": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "Y": {
+      "item": "minecraft:quartz"
+    },
+    "H": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "id": "bluearchive:koharu_halo",
+    "count": 1
+  }
+}

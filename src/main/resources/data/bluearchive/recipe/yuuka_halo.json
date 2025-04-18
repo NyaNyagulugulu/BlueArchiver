@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GPG",
+    " I ",
+    "   "
+  ],
+  "key": {
+
+    "G": { "item": "minecraft:glass" },
+
+    "P": { "item": "minecraft:paper" },
+
+    "I": { "item": "minecraft:iron_block" }
+  },
+  "result": {
+    "id": "bluearchive:yuuka_halo",
+    "count": 1
+  }
+}

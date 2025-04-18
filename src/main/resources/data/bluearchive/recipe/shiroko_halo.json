@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " O ",
+    "R D",
+    "NNU"
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "R": {
+      "item": "minecraft:nether_star"
+    },
+    "D": {
+      "item": "minecraft:stick"
+    },
+    "N": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "U": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "id": "bluearchive:shiroko_halo",
+    "count": 1
+  }
+}

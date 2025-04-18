@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LIZ",
+    " S ",
+    "  H"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:iron_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_block"
+    },
+    "Z": {
+      "item": "minecraft:feather"
+    },
+    "S": {
+      "item": "minecraft:gold_ingot"
+    },
+    "H": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "id": "bluearchive:mari_halo",
+    "count": 1
+  }
+}

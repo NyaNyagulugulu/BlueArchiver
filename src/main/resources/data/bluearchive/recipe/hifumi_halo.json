@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MEE",
+    "PN ",
+    "Q  "
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:quartz"
+    },
+    "E": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "P": {
+      "item": "minecraft:redstone"
+    },
+    "N": {
+      "item": "minecraft:stick"
+    },
+    "Q": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "result": {
+    "id": "bluearchive:hifumi_halo",
+    "count": 1
+  }
+}
