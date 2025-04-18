@@ -9,7 +9,7 @@
       }
     ]
   },
-  "music.BlueArchiver": {
+  "music.bluearchiver": {
     "sounds": [
       {
         "name": "bluearchive:music/bluearchiver",

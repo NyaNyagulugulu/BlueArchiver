@@ -12,7 +12,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.MusicDiscItem;
+import net.minecraft.util.Rarity;
 
 public class Bluearchive implements ModInitializer, ClientModInitializer {
     public static final String MOD_ID = "bluearchive";
@@ -151,7 +151,7 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
     public static final Item BLUEARCHIVER_DISC = Registry.register(
             Registries.ITEM,
             Identifier.of(MOD_ID, "bluearchiver_disc"),
-            new MusicDiscItem(1, BASounds.BLUEARCHIVER_MUSIC, new Item.Settings().maxCount(1), 120)
+            new Item(new Item.Settings().maxCount(1).rarity(Rarity.RARE).jukeboxPlayable(BASounds.BLUEARCHIVER_MUSIC_SONG))
     );
 
     // 创造物品组
