@@ -262,4 +262,16 @@ public class BAMaterials {
             false
     );
 
+    // 星野的光环
+    public static final RegistryEntry<ArmorMaterial> HOSHION_HALO = registerMaterial(
+            "hoshino_halo",
+            Map.of(ArmorItem.Type.HELMET, 3),
+            5,
+            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            () -> Ingredient.ofItems(Items.IRON_INGOT),
+            0.0f,
+            0.0f,
+            false
+    );
+
 }
