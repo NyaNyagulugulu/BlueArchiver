@@ -12,7 +12,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.MusicDiscItem;
+import net.minecraft.class_1747;
 
 public class Bluearchive implements ModInitializer, ClientModInitializer {
     public static final String MOD_ID = "bluearchive";
@@ -151,7 +151,7 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
     public static final Item BLUEARCHIVER_DISC = Registry.register(
             Registries.ITEM,
             Identifier.of(MOD_ID, "bluearchiver_disc"),
-            new MusicDiscItem(1, BASounds.BLUEARCHIVER_MUSIC, new Item.Settings().maxCount(1), 120)
+            new class_1747(1, BASounds.BLUEARCHIVER_MUSIC, new Item.Settings().maxCount(1), 120)
     );
 
     // 创造物品组
@@ -192,6 +192,7 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
 
     @Override
     public void onInitialize() {
+        BASounds.init();
         // 注册“卧槽，盒！装逼我让你飞起来”音效
         Registry.register(Registries.SOUND_EVENT, BOX_SOUND_ID, BOX_SOUND);
         Registry.register(Registries.ITEM, Identifier.of(MOD_ID, "als"), ALS);
