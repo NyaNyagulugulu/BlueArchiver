@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "V  ",
+    " C ",
+    "IDO"
+  ],
+  "key": {
+    "V": {
+      "item": "minecraft:nether_star"
+    },
+    "C": {
+      "item": "minecraft:gold_ingot"
+    },
+    "I": {
+      "item": "minecraft:redstone"
+    },
+    "D": {
+      "item": "minecraft:stick"
+    },
+    "O": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "result": {
+    "id": "bluearchive:momoi_halo",
+    "count": 1
+  }
+}

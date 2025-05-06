@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "YUH",
+    "A E",
+    "SC "
+  ],
+  "key": {
+    "Y": {
+      "item": "minecraft:diamond"
+    },
+    "U": {
+      "item": "minecraft:book"
+    },
+    "H": {
+      "item": "minecraft:iron_block"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "E": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "S": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "C": {
+      "item": "minecraft:glowstone_dust"
+    }
+  },
+  "result": {
+    "id": "bluearchive:hasumi_halo",
+    "count": 1
+  }
+}

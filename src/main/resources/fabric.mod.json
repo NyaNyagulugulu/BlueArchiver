@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "bluearchive",
+  "version": "${version}",
+  "name": "BlueArchive",
+  "description": "不穿胖次の小奶猫",
+  "authors": [
+    "不穿胖次の小奶猫",
+    "CrystalNeko"
+  ],
+  "contact": {
+    "website": "https://cnmsb.xin",
+    "repo": "https://github.com/NyaNyagulugulu/BlueArchiver",
+    "issues": "https://github.com/NyaNyagulugulu/BlueArchiver/issues",
+    "homepage": "https://cnmsb.xin"
+  },
+  "license": "GPL-v3",
+  "icon": "assets/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "neko.bluearchive.Bluearchive"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://qm.qq.com/q/gWnoeqpP20"
+      },
+      "update_checker": true
+    }
+  },
+  "mixins": [
+    "bluearchive.mixins.json"
+  ]
+}

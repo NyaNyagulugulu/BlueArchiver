@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " L ",
+    "CIC",
+    " G "
+  ],
+  "key": {
+    "L": { "item": "minecraft:lapis_lazuli" },
+
+    "C": { "item": "minecraft:cake" },
+
+    "I": { "item": "minecraft:iron_ingot" },
+
+    "G": { "item": "minecraft:gold_ingot" }
+  },
+  "result": {
+    "id": "bluearchive:hoshino_halo",
+    "count": 1
+  }
+}

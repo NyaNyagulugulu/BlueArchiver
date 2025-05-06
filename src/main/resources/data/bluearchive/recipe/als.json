@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GPG",
+    "FBF",
+    "   "
+  ],
+  "key": {
+    "G": { "item": "minecraft:glass" },
+    "P": { "item": "minecraft:paper" },
+    "F": { "item": "minecraft:feather" },
+    "B": { "item": "minecraft:book" }
+  },
+  "result": {
+    "id": "bluearchive:als",
+    "count": 1
+  }
+}

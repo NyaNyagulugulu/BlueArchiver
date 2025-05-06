@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " Y ",
+    "GSG",
+    " S "
+  ],
+  "key": {
+    "Y": {
+      "item": "minecraft:redstone"
+    },
+    "G": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "S": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "id": "bluearchive:alice_halo",
+    "count": 1
+  }
+}

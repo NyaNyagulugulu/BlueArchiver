@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " MQ",
+    "CEV",
+    "V Q"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "Q": {
+      "item": "minecraft:paper"
+    },
+    "C": {
+      "item": "minecraft:iron_block"
+    },
+    "E": {
+      "item": "minecraft:gold_ingot"
+    },
+    "V": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "id": "bluearchive:hanako_halo",
+    "count": 1
+  }
+}

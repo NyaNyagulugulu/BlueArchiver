@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " AU",
+    "E Z",
+    "C X"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:diamond"
+    },
+    "U": {
+      "item": "minecraft:stick"
+    },
+    "E": {
+      "item": "minecraft:book"
+    },
+    "Z": {
+      "item": "minecraft:paper"
+    },
+    "C": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "X": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "result": {
+    "id": "bluearchive:miku_halo",
+    "count": 1
+  }
+}

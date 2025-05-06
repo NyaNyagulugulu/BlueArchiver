@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " PO",
+    " LR",
+    "MY "
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:quartz"
+    },
+    "O": {
+      "item": "minecraft:paper"
+    },
+    "L": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:feather"
+    },
+    "M": {
+      "item": "minecraft:quartz"
+    },
+    "Y": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "id": "bluearchive:mika_halo",
+    "count": 1
+  }
+}

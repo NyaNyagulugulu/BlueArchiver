@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  Y",
+    " D ",
+    " DA"
+  ],
+  "key": {
+    "Y": {
+      "item": "minecraft:quartz"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "A": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "id": "bluearchive:noa_halo",
+    "count": 1
+  }
+}

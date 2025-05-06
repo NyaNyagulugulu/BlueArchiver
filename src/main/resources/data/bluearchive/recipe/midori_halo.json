@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " MD",
+    " HY",
+    "THC"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:nether_star"
+    },
+    "D": {
+      "item": "minecraft:redstone"
+    },
+    "H": {
+      "item": "minecraft:quartz"
+    },
+    "Y": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "T": {
+      "item": "minecraft:glass"
+    },
+    "C": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "result": {
+    "id": "bluearchive:midori_halo",
+    "count": 1
+  }
+}
