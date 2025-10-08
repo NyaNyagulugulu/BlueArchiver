@@ -26,7 +26,7 @@ jobs:
       uses: gradle/actions/setup-gradle@v4
 
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew build --console=plain
 
     - name: Get version from tag
       id: get_version
@@ -35,12 +35,23 @@ jobs:
     - name: Find built JAR file
       id: find_jar
       run: |
-        JAR_FILE=$(find build/libs -name "*.jar" -not -name "*-sources.jar" | head -n 1)
+        # Wait a moment for build to complete
+        sleep 2
+        # List all files in build directory for debugging
+        echo "Build directory contents:"
+        ls -la build/
+        echo "Build/libs directory contents:"
+        ls -la build/libs/ || echo "build/libs directory not found"
+        
+        # Find the main JAR file (excluding sources jar)
+        JAR_FILE=$(find build/libs -name "*.jar" -not -name "*-sources.jar" 2>/dev/null | head -n 1)
         if [ -z "$JAR_FILE" ]; then
           echo "No JAR file found in build/libs"
-          ls -la build/
+          echo "Looking for any JAR files in build directory..."
+          find build -name "*.jar" 2>/dev/null || echo "No JAR files found anywhere"
           exit 1
         fi
+        echo "Found JAR file: $JAR_FILE"
         echo "JAR_FILE=$JAR_FILE" >> $GITHUB_OUTPUT
         echo "JAR_NAME=$(basename $JAR_FILE)" >> $GITHUB_OUTPUT
 
