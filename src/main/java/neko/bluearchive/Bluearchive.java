@@ -20,6 +20,9 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
     // 爱丽丝的身份证
     public static final Item ALS = new GlintItem(new Item.Settings());
 
+    // 青辉石
+    public static final Item QINGHUISHI = new Item(new Item.Settings());
+
     // 白子的光环
     public static final Item SHIROKO_HALO = Registry.register(
             Registries.ITEM,
@@ -169,7 +172,7 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
                     .displayName(Text.translatable("itemGroup.bluearchive.general"))
                     .icon(() -> new ItemStack(ALS))
                     .entries((context, entries) -> {
-                        entries.add(ALS);            // 爱丽丝的身份证
+                        // 光环类
                         entries.add(SHIROKO_HALO);   // 白子的光环
                         entries.add(ALICE_HALO);     // 爱丽丝的光环
                         entries.add(HINA_HALO);      // 日奈丝的光环
@@ -189,7 +192,10 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
                         entries.add(MARI_HALO);      // 玛丽的光环
                         entries.add(YUUKA_HALO);     // 邮箱的光环
                         entries.add(HOSHION_HALO);     // 星野的光环
-
+                        // 物品类
+                        entries.add(ALS);            // 爱丽丝的身份证
+                        entries.add(QINGHUISHI);     // 青辉石
+                        // 唱片类
                         entries.add(BLUEARCHIVER_DISC); // 准备出发唱片
                     })
                     .build()
@@ -204,6 +210,7 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
         // 注册“卧槽，盒！装逼我让你飞起来”音效
         Registry.register(Registries.SOUND_EVENT, BOX_SOUND_ID, BOX_SOUND);
         Registry.register(Registries.ITEM, Identifier.of(MOD_ID, "als"), ALS);
+        Registry.register(Registries.ITEM, Identifier.of(MOD_ID, "qinghuishi"), QINGHUISHI);
 
         System.out.println("[Bluearchive] 模组初始化完成！");
 
