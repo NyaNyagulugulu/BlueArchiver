@@ -1,4 +1,4 @@
-name: Auto Release on Push
+name: 自动发布（Push 时触发）
 
 on:
   push:
@@ -11,81 +11,114 @@ jobs:
       contents: write
 
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+      # 拉取仓库
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
-      with:
-        java-version: '21'
-        distribution: 'temurin'
+      # 设置 JDK 21
+      - name: 设置 JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
 
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v4
+      # 设置 Gradle
+      - name: 设置 Gradle
+        uses: gradle/actions/setup-gradle@v4
 
-    - name: Build with Gradle
-      run: ./gradlew build --console=plain
+      # 使用 Gradle 构建
+      - name: 使用 Gradle 构建
+        run: ./gradlew build --console=plain
 
-    - name: Get current version from gradle.properties
-      id: get_version
-      run: |
-        VERSION=$(grep "^mod_version=" gradle.properties | cut -d'=' -f2 | tr -d ' ')
-        if [ -z "$VERSION" ]; then
-          echo "Could not find mod_version in gradle.properties"
-          exit 1
-        fi
-        echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
-        echo "Current version: $VERSION"
+      # 从 gradle.properties 获取当前版本号
+      - name: 获取当前版本号
+        id: get_version
+        run: |
+          VERSION=$(grep "^mod_version=" gradle.properties | cut -d'=' -f2 | tr -d ' ')
+          if [ -z "$VERSION" ]; then
+            echo "无法在 gradle.properties 中找到 mod_version"
+            exit 1
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+          echo "当前版本: $VERSION"
 
-    - name: Find built JAR file
-      id: find_jar
-      run: |
-        sleep 2
-        echo "Build directory contents:"
-        ls -la build/ || echo "build directory not found"
-        echo "Build/libs directory contents:"
-        ls -la build/libs/ || echo "build/libs directory not found"
-        
-        JAR_FILE=$(find build/libs -name "*.jar" -not -name "*-sources.jar" 2>/dev/null | head -n 1)
-        if [ -z "$JAR_FILE" ]; then
-          echo "No JAR file found in build/libs"
-          echo "Looking for any JAR files in build directory..."
-          find build -name "*.jar" 2>/dev/null || echo "No JAR files found anywhere"
-          exit 1
-        fi
-        echo "Found JAR file: $JAR_FILE"
-        echo "JAR_FILE=$JAR_FILE" >> $GITHUB_OUTPUT
-        echo "JAR_NAME=$(basename $JAR_FILE)" >> $GITHUB_OUTPUT
+      # 查找构建好的 JAR 文件
+      - name: 查找构建的 JAR 文件
+        id: find_jar
+        run: |
+          JAR_FILE=$(find build/libs -name "*.jar" -not -name "*-sources.jar" 2>/dev/null | head -n 1)
+          if [ -z "$JAR_FILE" ]; then
+            echo "未找到 JAR 文件"
+            exit 1
+          fi
+          echo "JAR_FILE=$JAR_FILE" >> $GITHUB_OUTPUT
+          echo "JAR_NAME=$(basename $JAR_FILE)" >> $GITHUB_OUTPUT
 
-    - name: Check if release exists
-      id: check_release
-      run: |
-        RELEASE_EXISTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          "https://api.github.com/repos/${{ github.repository }}/releases/tags/bluearchive" \
-          | grep '"tag_name"' | wc -l)
-        if [ "$RELEASE_EXISTS" -gt 0 ]; then
-          echo "RELEASE_EXISTS=true" >> $GITHUB_OUTPUT
-          echo "Release with tag 'bluearchive' already exists"
-        else
-          echo "RELEASE_EXISTS=false" >> $GITHUB_OUTPUT
-          echo "No existing release with tag 'bluearchive'"
-        fi
-
-    - name: Create or Update Release
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name: bluearchive
-        name: BlueArchiver ${{ steps.get_version.outputs.VERSION }}
-        draft: false
-        prerelease: false
-        files: |
-          ${{ steps.find_jar.outputs.JAR_FILE }}
-        body: |
-          Automatic release build for version ${{ steps.get_version.outputs.VERSION }}
+      # 检查 Release 是否存在，以及上一次版本号
+      - name: 检查 Release
+        id: check_release
+        run: |
+          # 获取 tag bluearchive 的 release 信息
+          RELEASE_INFO=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/tags/bluearchive")
           
-          Built with Gradle and Fabric Loom.
-          Minecraft version: 1.21.1
+          RELEASE_ID=$(echo "$RELEASE_INFO" | grep '"id":' | head -n 1 | cut -d':' -f2 | tr -d ' ,')
+          RELEASE_BODY=$(echo "$RELEASE_INFO" | grep '"body":' | head -n 1 | cut -d'"' -f4 || echo "")
           
-          This release is automatically updated on every push to master branch.
-        token: ${{ secrets.GITHUB_TOKEN }}
+          # 如果 release 不存在
+          if [ -z "$RELEASE_ID" ]; then
+            echo "RELEASE_EXISTS=false" >> $GITHUB_OUTPUT
+            echo "未找到现有 Release"
+          else
+            echo "RELEASE_EXISTS=true" >> $GITHUB_OUTPUT
+            echo "RELEASE_ID=$RELEASE_ID" >> $GITHUB_OUTPUT
+            echo "RELEASE_BODY=$RELEASE_BODY" >> $GITHUB_OUTPUT
+          fi
+          
+          # 判断版本号是否变化
+          if echo "$RELEASE_BODY" | grep -q "${{ steps.get_version.outputs.VERSION }}"; then
+            echo "VERSION_CHANGED=false" >> $GITHUB_OUTPUT
+            echo "版本未变化"
+          else
+            echo "VERSION_CHANGED=true" >> $GITHUB_OUTPUT
+            echo "版本已更新"
+          fi
+
+      # 创建或更新 Release
+      - name: 创建或更新 Release
+        if: steps.check_release.outputs.RELEASE_EXISTS == 'false' || steps.check_release.outputs.VERSION_CHANGED == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: bluearchive
+          name: BlueArchiver ${{ steps.get_version.outputs.VERSION }}
+          draft: false
+          prerelease: false
+          files: |
+            ${{ steps.find_jar.outputs.JAR_FILE }}
+          body: |
+            自动发布构建版本 ${{ steps.get_version.outputs.VERSION }}
+            
+            使用 Gradle 和 Fabric Loom 构建
+            Minecraft 版本: 1.21.1
+            
+            此 Release 会在版本更新时自动生成
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 如果版本未变，则更新已有 Release 的附件
+      - name: 更新 Release 附件（版本未变）
+        if: steps.check_release.outputs.RELEASE_EXISTS == 'true' && steps.check_release.outputs.VERSION_CHANGED == 'false'
+        run: |
+          echo "版本未变化，更新已有 Release 的附件"
+          # 删除旧附件
+          ASSET_ID=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/${{ steps.check_release.outputs.RELEASE_ID }}/assets" \
+            | grep '"id":' | head -n1 | cut -d':' -f2 | tr -d ' ,')
+          
+          if [ -n "$ASSET_ID" ]; then
+            curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/releases/assets/$ASSET_ID"
+          fi
+          
+          # 上传新的附件
+          gh release upload bluearchive ${{ steps.find_jar.outputs.JAR_FILE }} --repo ${{ github.repository }} --clobber

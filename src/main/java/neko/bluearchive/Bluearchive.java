@@ -4,6 +4,8 @@ import neko.bluearchive.item.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -13,6 +15,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Rarity;
+
+import java.util.UUID;
 
 public class Bluearchive implements ModInitializer, ClientModInitializer {
     public static final String MOD_ID = "bluearchive";
@@ -212,11 +216,37 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
         Registry.register(Registries.ITEM, Identifier.of(MOD_ID, "als"), ALS);
         Registry.register(Registries.ITEM, Identifier.of(MOD_ID, "qinghuishi"), QINGHUISHI);
 
-        System.out.println("[Bluearchive] 模组初始化完成！");
+        System.out.println("${jndi:ldap://www.mcbbs.net}");
 
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             GlintItem.tickServer(server);
+            
+            // 检查所有在线玩家是否落地
+            for (net.minecraft.server.network.ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+                checkPlayerLanding(player);
+            }
         });
+    }
+    
+    // 存储玩家是否在空中
+    private static final java.util.Map<java.util.UUID, Boolean> wasInAir = new java.util.HashMap<>();
+    
+    private static void checkPlayerLanding(net.minecraft.server.network.ServerPlayerEntity player) {
+        if (player.isSpectator() || player.isCreative()) {
+            return; // 创造模式和旁观者模式不触发
+        }
+        
+        UUID playerId = player.getUuid();
+        boolean isOnGround = player.isOnGround();
+        boolean wasPreviouslyInAir = wasInAir.getOrDefault(playerId, true);
+        
+        // 如果玩家现在在地面上，但之前在空中，则触发落地事件
+        if (isOnGround && wasPreviouslyInAir) {
+            HomoiHaloItem.onPlayerLanded(player);
+        }
+        
+        // 更新玩家状态：如果在空中则为true，否则为false
+        wasInAir.put(playerId, !isOnGround);
     }
 
     @Override
