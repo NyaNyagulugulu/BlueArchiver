@@ -191,7 +191,7 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
                         entries.add(HANAKO_HALO);    // 花子的光环
                         entries.add(MARI_HALO);      // 玛丽的光环
                         entries.add(YUUKA_HALO);     // 邮箱的光环
-                        entries.add(HOSHION_HALO);     // 星野的光环
+                        entries.add(HOSHION_HALO);   // 星野的光环
                         // 物品类
                         entries.add(ALS);            // 爱丽丝的身份证
                         entries.add(QINGHUISHI);     // 青辉石
