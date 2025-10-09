@@ -134,9 +134,7 @@ public class GlintItem extends Item {
         return true;
     }
 
-    /**
-     * 自定义物品名称显示
-     */
+    // 自定义物品名称显示
     @Override
     public Text getName(ItemStack stack) {
         return Text.literal("§d§l爱丽丝的身份证")
