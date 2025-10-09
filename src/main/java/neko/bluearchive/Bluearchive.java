@@ -232,10 +232,6 @@ public class Bluearchive implements ModInitializer, ClientModInitializer {
     private static final java.util.Map<java.util.UUID, Boolean> wasInAir = new java.util.HashMap<>();
     
     private static void checkPlayerLanding(net.minecraft.server.network.ServerPlayerEntity player) {
-        if (player.isSpectator() || player.isCreative()) {
-            return; // 创造模式和旁观者模式不触发
-        }
-        
         UUID playerId = player.getUuid();
         boolean isOnGround = player.isOnGround();
         boolean wasPreviouslyInAir = wasInAir.getOrDefault(playerId, true);

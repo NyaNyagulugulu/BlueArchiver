@@ -90,36 +90,8 @@ public class HomoiHaloItem extends ArmorItem implements GeoItem {
         
         ServerWorld world = (ServerWorld) player.getWorld();
         BlockPos playerPos = player.getBlockPos();
-        BlockPos feetPos = playerPos.down();
-        
-        // 获取脚下方块
-        Block blockBelow = world.getBlockState(feetPos).getBlock();
-        
-        // 根据方块硬度计算爆炸半径
-        float blockHardness = blockBelow.getHardness();
-        float explosionPower;
-        
-        if (blockHardness < 0) {
-            // 不可破坏方块（基岩、命令方块等）
-            explosionPower = 5.0f;
-        } else if (blockHardness <= 0.5f) {
-            // 软方块（草、泥土、沙子等）
-            explosionPower = 2.0f;
-        } else if (blockHardness <= 2.0f) {
-            // 中等硬度方块（石头、木头、矿石等）
-            explosionPower = 3.0f;
-        } else if (blockHardness <= 5.0f) {
-            // 硬方块（铁块、钻石块等）
-            explosionPower = 4.0f;
-        } else {
-            // 非常硬的方块
-            explosionPower = 5.0f;
-        }
         
         // 播放爆炸音效
         world.playSound(null, playerPos, SoundEvents.ENTITY_GENERIC_EXPLODE.value(), SoundCategory.BLOCKS, 1.0f, 1.0f);
-        
-        // 直接使用世界爆炸方法，不伤害实体
-        world.createExplosion(player, player.getX(), player.getY(), player.getZ(), explosionPower, null);
     }
 }
